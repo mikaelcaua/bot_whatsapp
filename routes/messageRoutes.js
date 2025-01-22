@@ -3,8 +3,8 @@ import { sendMessage, responseMessage } from '../controllers/messageController.j
 
 const router = express.Router();
 
-router.post('/send', sendMessage);
+router.post('/', sendMessage);
 
-router.post('/response', responseMessage);
+router.post('/', responseMessage);
 
 export default router;

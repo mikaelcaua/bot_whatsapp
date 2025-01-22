@@ -2,7 +2,8 @@ import axios from 'axios';
 import tokens_acess from '../utills/tokens_acess.js';
 import { addNineInNumber } from '../utills/formatter.js';
 
-const sendMessage = async (to) => {
+const sendMessage = async (req, res) => {
+  const { to } = req.body;
   try {
     await axios.post(
       `https://graph.facebook.com/v15.0/${tokens_acess.phoneNumberId}/messages`,
@@ -18,9 +19,10 @@ const sendMessage = async (to) => {
         },
       }
     );
-    console.log('Mensagem enviada com sucesso!');
+    res.status(200).send('Mensagem enviada com sucesso!');
   } catch (error) {
-    console.error('Erro ao enviar a mensagem: ', error);
+    console.error(error);
+    res.status(500).send('Erro ao enviar a mensagem.');
   }
 };
 
