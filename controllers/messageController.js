@@ -6,12 +6,12 @@ const sendMessage = async (req, res) => {
   const { to } = req.body;
   try {
     await axios.post(
-      `https://graph.facebook.com/v15.0/${tokens_acess.phoneNumberId}/messages`,
+      `https://graph.facebook.com/v21.0/${tokens_acess.phoneNumberId}/messages`,
       {
         messaging_product: 'whatsapp',
         to: to,
         type: "template",
-        template: { "name": "hello_world", "language": { "code": "en_US" } }
+        template: { "name": "test_message", "language": { "code": "pt_BR" } }
       },
       {
         headers: {
@@ -30,12 +30,12 @@ const responseMessage = async (sender) => {
   const formatedNumber = addNineInNumber(sender);
   try {
     await axios.post(
-      `https://graph.facebook.com/v15.0/${tokens_acess.phoneNumberId}/messages`,
+      `https://graph.facebook.com/v21.0/${tokens_acess.phoneNumberId}/messages`,
       {
         messaging_product: 'whatsapp',
         to: formatedNumber,
         type: "template",
-        template: { "name": "hello_world", "language": { "code": "en_US" } }
+        template: { "name": "test_message", "language": { "code": "pt_BR" } }
       },
       {
         headers: {
